@@ -299,7 +299,7 @@ export default function HomePage() {
         </div>
       </section>
 
-<Macbook3D screenImage="/winnerGarden.png" />
+<Macbook3D screenImage="/winnerGarden.png" onClickScreen={(mesh) => setTargetMesh(mesh)} />
       {/* Stats */}
       <section className="py-20 px-6 bg-card">
         <motion.div
@@ -355,7 +355,7 @@ export default function HomePage() {
       <ResumeSection/>
 
       {/* Declaration */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-card">
         <motion.div
           className="max-w-6xl mx-auto text-center"
           variants={fadeUp}

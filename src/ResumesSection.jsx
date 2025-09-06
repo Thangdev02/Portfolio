@@ -29,7 +29,7 @@ const ResumeSection = () => {
   ];
 
   return (
-    <section id="resume" className="py-20 px-6 bg-black text-gray-100" style={{ fontFamily: "Montserrat" }}>
+    <section id="resume" className="py-20 px-6 bg-card text-gray-100" style={{ fontFamily: "Montserrat" }}>
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
 
         {/* LEFT COLUMN */}

@@ -4,6 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
 import gsap from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function MacbookModel({ screenImage, onClickScreen }) {
   const { scene } = useGLTF("/models/macbook/scene.gltf");
@@ -76,7 +77,7 @@ function CameraController({ targetMesh, onZoomComplete }) {
         camera.lookAt(pos);
       },
       onComplete: () => {
-        onZoomComplete?.();
+        window.open("https://winnergarden.onrender.com/", "_blank");
       },
     });
   }, [targetMesh]);
@@ -87,7 +88,7 @@ function CameraController({ targetMesh, onZoomComplete }) {
 const Macbook3D = ({ screenImage }) => {
   const [targetMesh, setTargetMesh] = useState(null);
   const [showFull, setShowFull] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <>
       {/* Laptop 3D */}
@@ -120,29 +121,25 @@ const Macbook3D = ({ screenImage }) => {
 
       {/* Fullscreen overlay sau khi zoom */}
       <AnimatePresence>
-        {showFull && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 cursor-pointer"
-            onClick={() => {
-              setShowFull(false);
-              setTargetMesh(null); // reset để lần sau click lại zoom tiếp
-            }}
-          >
-            <motion.img
-              src={screenImage}
-              alt="Screen Full"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-full max-h-full rounded-lg shadow-2xl"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+  {showFull && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+    >
+      <motion.iframe
+        src="https://winnergarden.onrender.com/"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-[90%] h-[90%] rounded-lg shadow-2xl bg-white"
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </>
   );
 };
