@@ -190,7 +190,7 @@ export default function HomePage() {
       {/* About */}
       <section
   id="about"
-  className="py-20 px-6 bg-black text-white"
+  className="py-20 px-6bg-gradient-to-br from-black via-gray-900 to-gray-600 text-white"
   style={{ fontFamily: "Montserrat" }}
 >
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -200,7 +200,7 @@ export default function HomePage() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="space-y-6"
+      className="space-y-6 "
     >
       <h2 className="text-3xl font-bold uppercase tracking-wide border-b-2 border-orange-300 inline-block pb-1">
         {t("about")}
@@ -223,7 +223,7 @@ export default function HomePage() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="flex justify-center md:justify-end"
+      className="flex justify-center md:justify-end "
     >
       <img
         src="/deptrai.png"
@@ -299,9 +299,9 @@ export default function HomePage() {
         </div>
       </section>
 
-<Macbook3D/>
+<Macbook3D screenImage="/winnerGarden.png" />
       {/* Stats */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-card">
         <motion.div
           className="max-w-6xl mx-auto text-center"
           variants={fadeUp}
