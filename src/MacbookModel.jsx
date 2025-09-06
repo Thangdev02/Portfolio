@@ -14,11 +14,10 @@ function MacbookModel({ screenImage, onClickScreen }) {
     if (!scene || !texture) return;
     texture.flipY = false;
     texture.colorSpace = THREE.SRGBColorSpace;
-  
+
     // 👇 fix bị ngược hình
     texture.center.set(0.5, 0.5);
     texture.rotation = Math.PI;
-  
     scene.traverse((obj) => {
       if (obj.isMesh && obj.material?.name === "Material.003") {
         const mat = obj.material.clone();
@@ -32,7 +31,7 @@ function MacbookModel({ screenImage, onClickScreen }) {
       }
     });
   }, [scene, texture]);
-  
+
   return (
     <group
       scale={2}
@@ -61,8 +60,10 @@ function CameraController({ targetMesh, onZoomComplete }) {
 
     // Vector hướng màn hình
     const normal = new THREE.Vector3(0, -3, -0.7);
-    normal.applyQuaternion(targetMesh.getWorldQuaternion(new THREE.Quaternion()));
-
+    normal.applyQuaternion(
+      targetMesh.getWorldQuaternion(new THREE.Quaternion())
+    );
+ 
     // Vị trí camera
     const camPos = pos.clone().add(normal.multiplyScalar(0.3));
 
@@ -77,7 +78,7 @@ function CameraController({ targetMesh, onZoomComplete }) {
         camera.lookAt(pos);
       },
       onComplete: () => {
-        window.open("https://winnergarden.onrender.com/", "_blank");
+        onZoomComplete?.();
       },
     });
   }, [targetMesh]);
@@ -89,6 +90,7 @@ const Macbook3D = ({ screenImage }) => {
   const [targetMesh, setTargetMesh] = useState(null);
   const [showFull, setShowFull] = useState(false);
   const navigate = useNavigate();
+
   return (
     <>
       {/* Laptop 3D */}
@@ -121,25 +123,25 @@ const Macbook3D = ({ screenImage }) => {
 
       {/* Fullscreen overlay sau khi zoom */}
       <AnimatePresence>
-  {showFull && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-    >
-      <motion.iframe
-        src="https://winnergarden.onrender.com/"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-[90%] h-[90%] rounded-lg shadow-2xl bg-white"
-      />
-    </motion.div>
-  )}
-</AnimatePresence>
-
+        {showFull && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+            onClick={() => setShowFull(false)}
+          >
+            <motion.iframe
+              src="https://winnergarden.onrender.com/"
+              initial={{ scale: 0.8, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="w-[90%] h-[90%] rounded-lg shadow-2xl bg-white"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

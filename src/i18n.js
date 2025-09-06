@@ -39,13 +39,6 @@ const resources = {
             image: "https://iili.io/K3VMGfI.md.png",
             link:"https://landing.hangout.com.vn/"
           },
-          winnerGarden: {
-            title: "WinnerGarden",
-            description: "Is a website used to trade ornamental plants. Allows users to connect with each other through blogs. Admin can manage the garden.",
-            position: "Front-End Developer",
-            image: "https://iili.io/K3b9CMb.png",
-            link:"https://winnergarden.onrender.com"
-          },
           hangoutApp: {
             title: "HangOut App",
             description: "An application used to suggest places to have fun for young people, create schedules for fun. See the current hot places to have fun.",
@@ -53,6 +46,35 @@ const resources = {
             image: "https://iili.io/K3b3mo7.png",
             link:"https://apps.apple.com/vn/app/hangout/id6747320890?l=vi"
           },
+          winnerGarden: {
+            title: "WinnerGarden",
+            description: "Is a website used to trade ornamental plants. Allows users to connect with each other through blogs. Admin can manage the garden.",
+            position: "Front-End Developer",
+            image: "https://iili.io/K3b9CMb.png",
+            link:"https://winnergarden.onrender.com"
+          },
+          ohBauApp: {
+            title: "Oh! Bau App",
+            description: "An application to manage the health status of the fetus of mother and baby. Besides, there are also prenatal education courses, trading health support products, children's clothing. There is AI to support consultation",
+            position: "Front-End Developer",
+            image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/55/c7/42/55c7422e-f941-65b9-efeb-1a1feae09b1a/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp",
+            link:"https://apps.apple.com/vn/app/ohbau/id6747362141?l=vi"
+          },
+          broGlow: {
+            title: "BroGlow",
+            description: "BroGlow is a groundbreaking mobile app that is redefining the men's skincare market. By leveraging cutting-edge AI and machine learning technology",
+            position: "Front-End Developer",
+            image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/41/aa/84/41aa848e-5349-12d0-9071-3726b55cc504/Simulator_Screenshot_-_iPad_Pro_13-inch__U0028M4_U0029_-_2025-07-31_at_22.21.59.png/313x0w.webp",
+            link:"https://apps.apple.com/vn/app/broglow/id6748694221?l=vi"
+          },
+          gymRadar: {
+            title: "GymRadar",
+            description: "GymRadar is a mobile app that connects gyms, personal trainers (PTs) and fitness enthusiasts.",
+            position: "Front-End Developer",
+            image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fe/9c/68/fe9c6879-2d03-10f8-6f60-703076c64fca/z6782031988298_2dc32549367e6a360ccae65c3302f003.jpg/313x0w.webp",
+            link:"https://apps.apple.com/vn/app/gymradar/id6748238755?l=vi"
+          },
+      
       },
       qoute:"I have experience working on large and small projects, development and production.",
       languageandfw:"Language Programer & Framework",
@@ -97,6 +119,13 @@ const resources = {
             image: "https://iili.io/K3VMGfI.md.png",
             link:"https://winnergarden.onrender.com"
           },
+          hangoutApp: {
+            title: "HangOut App",
+            description: "Là 1 ứng dụng dùng để gợi ý địa điểm vui chơi cho giới trẻ, tạo lịch trình cho các cuộc vui. Xem được các địa điểm vui chơi đang hot hiện tại",
+            position: "Front-End Developer",
+            image: "https://iili.io/K3b3mo7.png",
+            link:"https://apps.apple.com/vn/app/hangout/id6747320890?l=vi"
+          },
           winnerGarden: {
             title: "WinnerGarden",
             description: "Là 1 website dùng để buôn bán cây kiểng lá. Cho phép người dùng có thể kết nối với nhau thông qua blog. Admin có thể quản lý được vườn",
@@ -104,12 +133,26 @@ const resources = {
             image: "https://iili.io/K3b9CMb.png",
             link:"https://winnergarden.onrender.com"
           },
-          hangoutApp: {
-            title: "HangOut App",
-            description: "Là 1 ứng dụng dùng để gợi ý địa điểm vui chơi cho giới trẻ, tạo lịch trình cho các cuộc vui. Xem được các địa điểm vui chơi đang hot hiện tại",
+          ohBauApp: {
+            title: "Oh! Bau App",
+            description: "Ứng dụng quản lý tình trạng sức khoẻ thai nhi của mẹ và bé. Bên cạnh đó còn có các khoá học thai giáo, buôn bán sản phẩm hỗ trợ sức khoẻ, quần áo trẻ em. Có AI hỗ trợ tư vấn",
             position: "Front-End Developer",
-            image: "https://iili.io/K3b3mo7.png",
-            link:"https://apps.apple.com/vn/app/hangout/id6747320890?l=vi"
+            image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/55/c7/42/55c7422e-f941-65b9-efeb-1a1feae09b1a/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp",
+            link:"https://apps.apple.com/vn/app/ohbau/id6747362141?l=vi"
+          },
+          broGlow: {
+            title: "BroGlow",
+            description: "BroGlow là một ứng dụng di động đột phá, định hình lại thị trường chăm sóc da dành cho nam giới. Bằng cách tận dụng công nghệ AI và học máy tiên tiến.",
+            position: "Front-End Developer",
+            image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/41/aa/84/41aa848e-5349-12d0-9071-3726b55cc504/Simulator_Screenshot_-_iPad_Pro_13-inch__U0028M4_U0029_-_2025-07-31_at_22.21.59.png/313x0w.webp",
+            link:"https://apps.apple.com/vn/app/broglow/id6748694221?l=vi"
+          },
+          gymRadar: {
+            title: "GymRadar",
+            description: "GymRadar là ứng dụng di động kết nối các phòng tập, huấn luyện viên cá nhân (PT) và những người đam mê thể hình.",
+            position: "Front-End Developer",
+            image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fe/9c/68/fe9c6879-2d03-10f8-6f60-703076c64fca/z6782031988298_2dc32549367e6a360ccae65c3302f003.jpg/313x0w.webp",
+            link:"https://apps.apple.com/vn/app/gymradar/id6748238755?l=vi"
           },
         },
         qoute:"Tôi đã có kinh nghiệm làm các dự án lớn, nhỏ, môi trường phát triển và sản xuất",
