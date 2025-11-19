@@ -94,7 +94,7 @@ const Macbook3D = ({ screenImage }) => {
   return (
     <>
       {/* Laptop 3D */}
-      <div className="w-full h-[600px] bg-card rounded-2xl overflow-hidden relative">
+      <div className="w-full h-[600px] bg-black rounded-2xl overflow-hidden relative">
         <Canvas camera={{ position: [1.2, 0.9, 1.3], fov: 22 }}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[5, 5, 5]} intensity={1} />

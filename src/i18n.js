@@ -74,6 +74,13 @@ const resources = {
             image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fe/9c/68/fe9c6879-2d03-10f8-6f60-703076c64fca/z6782031988298_2dc32549367e6a360ccae65c3302f003.jpg/313x0w.webp",
             link:"https://apps.apple.com/vn/app/gymradar/id6748238755?l=vi"
           },
+          superPanda: {
+            title: "Super Panda",
+            description: "Super Panda is a website that offers English courses, allowing users to study, take classes, take practice tests,... graded by AI",
+            position: "Front-End Developer",
+            image: "https://i.ibb.co/ksCZhbW0/Screen-Shot-2025-11-19-at-19-42-36.png",
+            link:"https://www.superpanda.com.vn/"
+          },
       
       },
       qoute:"I have experience working on large and small projects, development and production.",
@@ -153,6 +160,13 @@ const resources = {
             position: "Front-End Developer",
             image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fe/9c/68/fe9c6879-2d03-10f8-6f60-703076c64fca/z6782031988298_2dc32549367e6a360ccae65c3302f003.jpg/313x0w.webp",
             link:"https://apps.apple.com/vn/app/gymradar/id6748238755?l=vi"
+          },
+          superPanda: {
+            title: "Super Panda",
+            description: "Super Panda là 1 website có các khoá học tiếng anh, cho phép người dùng có thể học, tham gia lớp học, thi thử,... chấm bài bằng AI",
+            position: "Front-End Developer",
+            image: "https://i.ibb.co/ksCZhbW0/Screen-Shot-2025-11-19-at-19-42-36.png",
+            link:"https://www.superpanda.com.vn/"
           },
         },
         qoute:"Tôi đã có kinh nghiệm làm các dự án lớn, nhỏ, môi trường phát triển và sản xuất",

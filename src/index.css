@@ -237,3 +237,7 @@
 .name:hover{
   color: orange;
 }
+a{
+  color: orange !important;
+  text-decoration: none !important;
+}
