@@ -11,11 +11,11 @@ const resources = {
       about: "About",
       resume: "Resume",
       portfolio: "Portfolio",
-      contact: "Contact",
+      contactt: "Contact",
       projectsDone:"Projects",
        subname:"Le Quoc",
        lastname:"Thang",
-       aboutMe:"I am a dedicated software developer with a strong passion for exploring and researching new technologies. With the ability to work on both front-end and back-end development, I strive to deliver clean, efficient, and scalable solutions. I enjoy continuous learning, take pride in hard work, and always aim to create high-quality digital products.",
+       aboutMe:"I’m a Full-stack Developer who loves to tinker. I don’t just code; I enjoy diving into new tech to see how it can make my work better. For me, good enough isn't enough – I'm all about building high-quality stuff.",
        projects: {
         winnerTech: {
           title: "WinnerTech",
@@ -61,11 +61,11 @@ const resources = {
             link:"https://apps.apple.com/vn/app/ohbau/id6747362141?l=vi"
           },
           broGlow: {
-            title: "BroGlow",
-            description: "BroGlow is a groundbreaking mobile app that is redefining the men's skincare market. By leveraging cutting-edge AI and machine learning technology",
-            position: "Front-End Developer",
-            image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/41/aa/84/41aa848e-5349-12d0-9071-3726b55cc504/Simulator_Screenshot_-_iPad_Pro_13-inch__U0028M4_U0029_-_2025-07-31_at_22.21.59.png/313x0w.webp",
-            link:"https://apps.apple.com/vn/app/broglow/id6748694221?l=vi"
+            title: "Landing NEWMWAY",
+            description: "This is a landing page for the NEWMWAY TEAKWOOD website and app, aiming to promote the brand, products, and applications of the NEWMWAY company.",
+            position: "Front-End Developer, Designer",
+            image: "/newmway.png",
+            link:"https://landing-newmway.vercel.app/"
           },
           gymRadar: {
             title: "GymRadar",
@@ -81,13 +81,160 @@ const resources = {
             image: "https://i.ibb.co/ksCZhbW0/Screen-Shot-2025-11-19-at-19-42-36.png",
             link:"https://www.superpanda.com.vn/"
           },
-      
+          angiang: {
+            title: "An Giang Real Estate",
+            description: "This website showcases real estate in the An Giang area, features a 360-degree map, and displays actual sun exposure times.",
+            position: "Front-End Developer",
+            image: "/Angiang.png",
+            link:"https://an-giang-real-estate.vercel.app/"
+          },
+       thiepcuoi: {
+            title: "Online Wedding Invitations",
+            description: "This is a website project that allows users to create online wedding invitations and share them with friends.",
+            position: "Front-End Developer",
+            image: "/Tiemanhrachgia.png",
+            link:"https://winner-wedding.vercel.app/"
+          },
       },
       qoute:"I have experience working on large and small projects, development and production.",
       languageandfw:"Language Programer & Framework",
       declaration:"Declaration",
-      publications:"I am a person who is always dedicated to work, passionate about technology research and programming. I will always work wholeheartedly and wholeheartedly, if you need me, please contact me immediately."
+      publications:"I am a person who is always dedicated to work, passionate about technology research and programming. I will always work wholeheartedly and wholeheartedly, if you need me, please contact me immediately.",
+      resume: {
+  title: "RESUME",
+  experience: "Experience",
+  education: "Education",
+  skills: "Skills",
+  languages: "Languages",
+  whatCanIDo: "What Can I Do?",
+  educationTitle: "Bachelor of Information Technology",
+  university: "FPT University",
+  capabilities: "Document • Management • Planning • Design • Coding • Testing • Deploy • Leadership • Problem Solving",
+  experiences: {
+    exp1: {
+      year: "06/2025 - Present",
+      company: "WinnerTech",
+      role: "Founder"
+    },
+    exp2: {
+      year: "07/2025 - 08/2025",
+      company: "DearFab",
+      role: "Project Manager, Front-End Developer, Designer"
+    },
+    exp3: {
+      year: "07/2025 - 07/2025",
+      company: "LandingPage & App HangOut",
+      role: "Project Manager, Front-End Developer, AI Developer"
+    },
+    exp4: {
+      year: "06/2025 - 07/2025",
+      company: "Oh!Bau App",
+      role: "Project Manager, AI Developer"
+    },
+    exp5: {
+      year: "02/2024 - 12/2024",
+      company: "DANST - Sports Facilities System",
+      role: "Founder, Front-End & Mobile Developer"
+    }
+  },
+  skillss: {
+    design: "Design",
+    coding: "Coding",
+    testing: "Testing",
+    deploy: "Deploy"
+  },
+  langs: {
+    english: "English",
+    vietnamese: "Vietnamese"
+  }
+},
+services: {
+  subtitle: "Services",
+  title: "OUR PACKAGES",
+  description: "Choose the perfect package for your business needs. From simple landing pages to complex web applications, we've got you covered.",
+  popular: "POPULAR",
+  getStarted: "Get Started",
+  packages: {
+    basic: {
+      name: "Basic Package",
+      price: "$100",
+      unit: "starting from",
+      features: [
+        "Landing Page Design",
+        "Responsive Layout",
+          "Free Domain",
+        "Basic SEO Optimization",
+        "1 Month Support"
+      ]
+    },
+    standard: {
+      name: "Standard Package",
+      price: "$270",
+      unit: "starting from",
+      features: [
+        "Multi-page Website",
+        "Custom Design",
+         "Free Domain",
+        "Advanced SEO",
+        "Admin Dashboard",
+        "3 Months Support"
+      ]
+    },
+    premium: {
+      name: "Premium Package",
+      price: "Contact",
+      unit: "starting from",
+      features: [
+        "Full Web Application",
+        "Custom Features",
+        "Admin Dashboard",
+        "Payment Integration",
+        "AI Chatbot",
+        "Mobile App (Optional)",
+        "6 Months Support"
+      ]
+    }
+  },
+  whyChooseUs: {
+    title: "Why Choose Us?",
+    design: {
+      title: "Modern Design",
+      description: "We create beautiful, user-friendly interfaces that engage your audience and enhance user experience."
+    },
+    quality: {
+      title: "High Quality",
+      description: "Clean code, best practices, and thorough testing ensure your website runs smoothly and efficiently."
+    },
+    support: {
+      title: "Dedicated Support",
+      description: "We're here for you even after launch. Get continuous support and maintenance for your project."
+    }
+  }
+},
 
+contact: {
+  subtitle: "Get In Touch",
+  title: "LET'S WORK TOGETHER",
+  description: "Have a project in mind? Fill out the form below and I'll get back to you as soon as possible.",
+  directEmail: "Or email me directly at:",
+  form: {
+    name: "Full Name",
+    namePlaceholder: "John Doe",
+    email: "Email Address",
+    emailPlaceholder: "john@example.com",
+    phone: "Phone Number",
+    phonePlaceholder: "+1 234 567 8900",
+    package: "Select Package",
+    selectPackage: "Choose a package...",
+    message: "Your Message",
+    messagePlaceholder: "Tell me about your project...",
+    submit: "Send Message",
+    sending: "Sending..."
+  },
+  successMessage: "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+  errorMessage: "Oops! Something went wrong. Please try again or email me directly.",
+  learnMore: "Learn More About Me",
+},
     }
   },
   vi: {
@@ -97,11 +244,11 @@ const resources = {
       about: "Giới thiệu",
       resume: "Hồ sơ",
       portfolio: "Dự án",
-      contact: "Liên hệ",
+      contactt: "Liên hệ",
       projectsDone:"Dự án đã làm",
        subname:"Lê Quốc",
        lastname:"Thắng",
-       aboutMe:"Tôi là một nhà phát triển phần mềm tận tụy với niềm đam mê khám phá và nghiên cứu các công nghệ mới. Với khả năng làm việc trên cả front-end và back-end, tôi luôn nỗ lực trau dồi và học hỏi. Tôi thích nghiên cứu những thứ mới và luôn hướng tới việc tạo ra các sản chất lượng cao.",
+       aboutMe:"Mình là một Full-stack Developer thích mày mò. Thay vì chỉ làm cho xong việc, mình thích tìm hiểu xem công nghệ mới có gì hay để áp dụng vào dự án. Tiêu chí của mình là sản phẩm làm ra không chỉ chạy tốt mà còn phải chỉn chu.",
        projects: {
         winnerTech: {
           title: "WinnerTech",
@@ -148,11 +295,11 @@ const resources = {
             link:"https://apps.apple.com/vn/app/ohbau/id6747362141?l=vi"
           },
           broGlow: {
-            title: "BroGlow",
-            description: "BroGlow là một ứng dụng di động đột phá, định hình lại thị trường chăm sóc da dành cho nam giới. Bằng cách tận dụng công nghệ AI và học máy tiên tiến.",
-            position: "Front-End Developer",
-            image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/41/aa/84/41aa848e-5349-12d0-9071-3726b55cc504/Simulator_Screenshot_-_iPad_Pro_13-inch__U0028M4_U0029_-_2025-07-31_at_22.21.59.png/313x0w.webp",
-            link:"https://apps.apple.com/vn/app/broglow/id6748694221?l=vi"
+             title: "Landing NEWMWAY",
+            description: "Là 1 landing page của website và ứng dụng của NEWMWAY TEAKWOOD, có hiệu ứng 3D, nhằm quảng bá thương hiệu và sản phẩm, ứng dụng của doanh nghiệp NEWMWAY",
+            position: "Front-End Developer, Designer",
+            image: "/newmway.png",
+            link:"https://landing-newmway.vercel.app/"
           },
           gymRadar: {
             title: "GymRadar",
@@ -168,13 +315,161 @@ const resources = {
             image: "https://i.ibb.co/ksCZhbW0/Screen-Shot-2025-11-19-at-19-42-36.png",
             link:"https://www.superpanda.com.vn/"
           },
+           angiang: {
+            title: "Bất Động Sản An Giang",
+            description: "Website giới thiệu bất động sản của khu vực An Giang, Có xem map 360 độ và xem được thời gian đỗ nắng thực tế",
+            position: "Front-End Developer",
+            image: "/Angiang.png",
+            link:"https://an-giang-real-estate.vercel.app/"
+          },
+          thiepcuoi: {
+            title: "Online Wedding Invitations",
+            description: "Là 1 dự án website cho phép người dùng sử dụng để tạo ra thiệp cưới online, có thể chia sẽ cho bạn bè",
+            position: "Front-End Developer",
+            image: "/Tiemanhrachgia.png",
+            link:"https://winner-wedding.vercel.app/"
+          },
         },
         qoute:"Tôi đã có kinh nghiệm làm các dự án lớn, nhỏ, môi trường phát triển và sản xuất",
         languageandfw:"Các Ngôn ngữ lập trình và Framework",
         declaration:"Lời Tuyên Bố",
-        publications:"Tôi là 1 người luôn hết mình với công việc, đam mê nghiên cứu công nghệ, lập trình. Tôi sẽ luôn làm việc tận tâm và hết mình, nếu bạn cần tôi hãy liên hệ với tôi ngay"
-
+        publications:"Tôi là 1 người luôn hết mình với công việc, đam mê nghiên cứu công nghệ, lập trình. Tôi sẽ luôn làm việc tận tâm và hết mình, nếu bạn cần tôi hãy liên hệ với tôi ngay",
+        resume: {
+  title: "HỒ SƠ",
+  experience: "Kinh nghiệm",
+  education: "Học vấn",
+  skills: "Kỹ năng",
+  languages: "Ngôn ngữ",
+  whatCanIDo: "Tôi có thể làm gì?",
+  educationTitle: "Cử nhân Công nghệ Thông tin",
+  university: "Đại học FPT",
+  capabilities: "Tài liệu • Quản lý • Lập kế hoạch • Thiết kế • Lập trình • Kiểm thử • Triển khai • Lãnh đạo • Giải quyết vấn đề",
+  experiences: {
+    exp1: {
+      year: "06/2025 - Hiện tại",
+      company: "WinnerTech",
+      role: "Giám Đốc"
+    },
+    exp2: {
+      year: "07/2025 - 08/2025",
+      company: "DearFab",
+      role: "Quản lý dự án, Lập trình viên Front-End, Thiết kế"
+    },
+    exp3: {
+      year: "07/2025 - 07/2025",
+      company: "LandingPage & App HangOut",
+      role: "Quản lý dự án, Lập trình viên Front-End, Phát triển AI"
+    },
+    exp4: {
+      year: "06/2025 - 07/2025",
+      company: "Oh!Bau App",
+      role: "Quản lý dự án, Phát triển AI"
+    },
+    exp5: {
+      year: "02/2024 - 12/2024",
+      company: "DANST - Hệ thống Cơ sở Thể thao",
+      role: "Người sáng lập, Lập trình viên Front-End & Mobile"
     }
+  },
+  skillss: {
+    design: "Thiết kế",
+    coding: "Lập trình",
+    testing: "Kiểm thử",
+    deploy: "Triển khai"
+  },
+  langs: {
+    english: "Tiếng Anh",
+    vietnamese: "Tiếng Việt"
+  }
+},
+services: {
+  subtitle: "Dịch Vụ",
+  title: "CÁC GÓI DỊCH VỤ",
+  description: "Chọn gói dịch vụ phù hợp với nhu cầu doanh nghiệp của bạn. Từ landing page đơn giản đến ứng dụng web phức tạp, chúng tôi đều có thể làm được.",
+  popular: "PHỔ BIẾN",
+  getStarted: "Bắt đầu",
+  packages: {
+    basic: {
+      name: "Gói Cơ Bản",
+      price: "2.599.000đ",
+      unit: "Dành cho website giới thiệu",
+      features: [
+        "Thiết kế Landing Page",
+        "Giao diện Responsive",
+        "Miễn Phí tên miền",
+        "SEO cơ bản",
+        "Hỗ trợ 1 tháng"
+      ]
+    },
+    standard: {
+      name: "Gói Tiêu Chuẩn",
+      price: "6.999.000đ",
+      unit: "Dành cho các website bán hàng, booking,...",
+      features: [
+        "Website nhiều trang",
+        "Thiết kế tùy chỉnh",
+         "Miễn Phí tên miền",
+        "SEO nâng cao",
+       "Trang quản trị Admin",
+        "Hỗ trợ 3 tháng"
+      ]
+    },
+    premium: {
+      name: "Gói Cao Cấp",
+      price: "Liên Hệ",
+      unit: "Các Website, Ứng dụng cao cấp, phức tạp",
+      features: [
+        "Ứng dụng Web đầy đủ",
+        "Tính năng tùy chỉnh",
+        "Trang quản trị Admin",
+        "Tích hợp thanh toán",
+        "AI Chatbot",
+        "Ứng dụng Mobile (Tùy chọn)",
+        "Hỗ trợ 6 tháng"
+      ]
+    }
+  },
+  whyChooseUs: {
+    title: "Tại sao chọn chúng tôi?",
+    design: {
+      title: "Thiết kế Hiện đại",
+      description: "Chúng tôi tạo ra giao diện đẹp mắt, thân thiện với người dùng, thu hút khách hàng và nâng cao trải nghiệm."
+    },
+    quality: {
+      title: "Chất lượng Cao",
+      description: "Code sạch, tuân thủ best practices và kiểm thử kỹ lưỡng đảm bảo website hoạt động mượt mà và hiệu quả."
+    },
+    support: {
+      title: "Hỗ trợ Tận tâm",
+      description: "Chúng tôi luôn ở đây ngay cả sau khi ra mắt. Nhận được hỗ trợ và bảo trì liên tục cho dự án của bạn."
+    }
+  }
+},
+
+contact: {
+  subtitle: "Liên Hệ",
+  title: "HÃY LÀM VIỆC CÙNG NHAU",
+  description: "Có dự án trong đầu? Điền vào form bên dưới và tôi sẽ phản hồi bạn sớm nhất có thể.",
+  directEmail: "Hoặc gửi email trực tiếp đến:",
+  form: {
+    name: "Họ và Tên",
+    namePlaceholder: "Nguyễn Văn A",
+    email: "Địa chỉ Email",
+    emailPlaceholder: "example@gmail.com",
+    phone: "Số điện thoại",
+    phonePlaceholder: "+84 123 456 789",
+    package: "Chọn Gói",
+    selectPackage: "Chọn một gói dịch vụ...",
+    message: "Tin nhắn của bạn",
+    messagePlaceholder: "Hãy cho tôi biết về dự án của bạn...",
+    submit: "Gửi tin nhắn",
+    sending: "Đang gửi..."
+  },
+  successMessage: "Cảm ơn bạn! Tin nhắn đã được gửi thành công. Tôi sẽ phản hồi bạn sớm.",
+  errorMessage: "Rất tiếc! Đã có lỗi xảy ra. Vui lòng thử lại hoặc gửi email trực tiếp cho tôi.",
+  learnMore: "Tìm hiểu thêm về tôi",
+}
+      }
   }
 };
 

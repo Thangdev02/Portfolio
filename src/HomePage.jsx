@@ -8,8 +8,12 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Environment, PerspectiveCamera } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import ProjectCardStack from "./ProjectCardStack";
+import ProjectSection from "./ProjectSection";
+import ServicesSection from "./ServicesSection";
+import ContactSection from "./Contactsection";
+import ZaloQR from "./QR3D";
 
-// 3D Scene Component
+
 function Scene3D() {
   const gltf = useLoader(GLTFLoader, "/backg/scene.gltf");
   
@@ -22,7 +26,7 @@ function Scene3D() {
   );
 }
 
-// Component điều khiển thông minh
+
 function SmartControls() {
   const controlsRef = useRef();
   
@@ -90,15 +94,10 @@ const Button = ({ children, size = "default", className = "", variant = "primary
   );
 };
 
-// Cursor Trail Item Component
-
-export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState(0);
-  const containerRef = useRef(null);
-
-  const { t, i18n } = useTranslation();
-  const projects = Object.values(t("projects", { returnObjects: true }));
+// Modal Component for Resume & Languages
+const ResumeModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState("resume");
 
   const languages = [
     { name: "JavaScript", img: "https://techvccloud.mediacdn.vn/2018/11/23/js-15429579443112042672363-crop-1542957949936317424252.png" },
@@ -108,13 +107,116 @@ export default function HomePage() {
     { name: "Flutter", img: "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2023_12_22_638388621130438517_flutter-la-gi_.jpg" },
   ];
 
-  
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, y: 20 }}
+          animate={{ scale: 1, y: 0 }}
+          exit={{ scale: 0.9, y: 20 }}
+          className="bg-[#0a0a0a] border border-white/10 rounded-lg max-w-5xl w-full max-h-[90vh] overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-white/10">
+            <div className="flex gap-6">
+              <button
+                onClick={() => setActiveTab("resume")}
+                className={`text-sm tracking-wider uppercase transition-colors ${
+                  activeTab === "resume" ? "text-white" : "text-gray-500 hover:text-white"
+                }`}
+              >
+                {t("resume")}
+              </button>
+              <button
+                onClick={() => setActiveTab("languages")}
+                className={`text-sm tracking-wider uppercase transition-colors ${
+                  activeTab === "languages" ? "text-white" : "text-gray-500 hover:text-white"
+                }`}
+              >
+                {t("languageandfw")}
+              </button>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-white/50 hover:text-white transition-colors"
+            >
+              <FaTimes size={24} />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
+            {activeTab === "resume" ? (
+              <div className="p-8">
+                <ResumeSection />
+              </div>
+            ) : (
+              <div className="p-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-12"
+                >
+                  <h3 className="text-4xl font-light text-white mb-4">
+                    {t("languageandfw")}
+                  </h3>
+                  <div className="w-16 h-[1px] bg-white" />
+                </motion.div>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                  {languages.map((lang, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="group"
+                    >
+                      <div className="aspect-square bg-[#111] border border-white/10 p-6 flex items-center justify-center group-hover:border-white/30 transition-all duration-300">
+                        <img
+                          src={lang.img}
+                          alt={lang.name}
+                          className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                        />
+                      </div>
+                      <p className="mt-3 text-center text-xs tracking-wider text-gray-500 uppercase group-hover:text-white transition-colors">
+                        {lang.name}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+export default function HomePage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     let isScrolling = false;
     let scrollTimeout;
 
     const handleWheel = (e) => {
-      if (isScrolling) {
+      if (isScrolling || isModalOpen) {
         e.preventDefault();
         return;
       }
@@ -141,7 +243,7 @@ export default function HomePage() {
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [currentSection]);
+  }, [currentSection, isModalOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -162,7 +264,27 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
- 
+  const navItems = [
+    { key: "home", index: 0, id: "home" },
+    { key: "about", index: 1, id: "about" },
+    { key: "projectsDone", index: 2, id: "projectsDone" },
+    { key: "services.subtitle", index: 3, id: "services" },
+    { key: "contact.subtitle", index: 4, id: "contact" }
+  ];
+
+  const scrollToSection = (index) => {
+    const sections = document.querySelectorAll('section[data-section]');
+    const targetSection = sections[index];
+    
+    if (targetSection) {
+      targetSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setCurrentSection(index);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden" ref={containerRef}>
       <style jsx global>{`
@@ -193,17 +315,6 @@ export default function HomePage() {
           scroll-snap-stop: always;
           min-height: 100vh;
           position: relative;
-        }
-
-        .scroll-progress {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background: white;
-          transform-origin: left;
-          z-index: 999;
         }
 
         .section-indicators {
@@ -242,36 +353,23 @@ export default function HomePage() {
         }
       `}</style>
 
-     
-
-      <motion.div
-        className="scroll-progress"
-        style={{
-          scaleX: useTransform(
-            useMotionValue(0),
-            [0, 1],
-            [0, 1]
-          ),
-        }}
-      />
-
+      {/* Section Indicators */}
       <div className="section-indicators hidden lg:flex">
         {[0, 1, 2, 3, 4].map((index) => (
           <div
             key={index}
             className={`section-indicator ${currentSection === index ? 'active' : ''}`}
-            onClick={() => {
-              const sections = document.querySelectorAll('section[data-section]');
-              sections[index]?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => scrollToSection(index)}
           />
         ))}
       </div>
 
+      {/* Resume Modal */}
+      <ResumeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-12 py-6">
-          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -283,28 +381,22 @@ export default function HomePage() {
             </span>
           </motion.div>
 
-         <nav className="hidden lg:flex items-center gap-12">
-  {["home", "about", "projectsDone", "languageandfw"].map((item, index) => (
-    <a
-      key={item}
-      href={`#${item}`}
-      onClick={(e) => {
-        e.preventDefault();
-        const sections = document.querySelectorAll('section[data-section]');
-        sections[index]?.scrollIntoView({ behavior: 'smooth' });
-      }}
-      className="relative text-xs font-light tracking-[0.2em] text-gray-400 hover:text-white transition-all duration-500 uppercase group"
-    >
-      {t(item)}
-      <span
-        className={`absolute -bottom-2 left-0 h-[1px] bg-white transition-all duration-500 ${
-          currentSection === index ? "w-full" : "w-0 group-hover:w-full"
-        }`}
-      />
-    </a>
-  ))}
-</nav>
-
+          <nav className="hidden lg:flex items-center gap-12">
+            {navItems.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => scrollToSection(item.index)}
+                className="relative text-xs font-light tracking-[0.2em] text-gray-400 hover:text-white transition-all duration-500 uppercase group"
+              >
+                {t(item.key)}
+                <span
+                  className={`absolute -bottom-2 left-0 h-[1px] bg-white transition-all duration-500 ${
+                    currentSection === item.index ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </button>
+            ))}
+          </nav>
 
           <div className="flex items-center gap-6">
             <select
@@ -335,15 +427,17 @@ export default function HomePage() {
               className="lg:hidden bg-[#0a0a0a] border-t border-white/5"
             >
               <div className="py-8 px-6 space-y-6">
-                {["home", "about", "projectsDone", "languageandfw"].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block text-sm font-light tracking-[0.2em] text-white uppercase hover:text-gray-400 transition duration-300"
+                {navItems.map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => {
+                      scrollToSection(item.index);
+                      setIsMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-sm font-light tracking-[0.2em] text-white uppercase hover:text-gray-400 transition duration-300"
                   >
-                    {t(item)}
-                  </a>
+                    {t(item.key)}
+                  </button>
                 ))}
               </div>
             </motion.div>
@@ -351,8 +445,8 @@ export default function HomePage() {
         </AnimatePresence>
       </header>
 
-      {/* HERO SECTION WITH 3D BACKGROUND */}
-      <section id="home" data-section="0" className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
+      {/* HERO SECTION */}
+       <section id="home" data-section="0" className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
         {/* 3D Background */}
         <div className="absolute inset-0 z-0">
           <Canvas>
@@ -371,7 +465,7 @@ export default function HomePage() {
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40 z-1 pointer-events-none" />
 
-        <motion.div 
+        <motion.div
           className="relative z-10 text-center max-w-5xl mx-auto pointer-events-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -400,7 +494,15 @@ export default function HomePage() {
             transition={{ delay: 0.8, duration: 1 }}
             className="mt-12 text-sm tracking-[0.4em] font-light text-gray-300 uppercase drop-shadow-lg"
           >
-            Web Developer
+            Developer & Designer
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="mt-12 text-sm tracking-[0.4em] font-light text-gray-300 uppercase drop-shadow-lg"
+          >
+            Website, App IOS & Android, AI
           </motion.p>
 
           <motion.div
@@ -409,7 +511,11 @@ export default function HomePage() {
             transition={{ delay: 1.2, duration: 0.8 }}
             className="mt-16 flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <Button size="lg">{t("contact")}</Button>
+            {/* Thêm link Zalo ở đây */}
+            <a href="https://zalo.me/0949450800" target="_blank" rel="noopener noreferrer">
+              <Button size="lg">{t("contactt")}</Button>
+            </a>
+
             <Button size="lg" variant="secondary">{t("projectsDone")}</Button>
           </motion.div>
 
@@ -471,7 +577,7 @@ export default function HomePage() {
                   transition={{ delay: 0.3 }}
                   className="text-6xl md:text-7xl font-light tracking-tight leading-tight text-white"
                 >
-                  DESIGN<br />& FREEDOM
+                  PERSONAL<br />INFOR
                 </motion.h2>
                 
                 <motion.div
@@ -498,7 +604,7 @@ export default function HomePage() {
                   <div className="pt-4 space-y-2">
                     <p>thangdev02@gmail.com</p>
                     <p>0949 450 800</p>
-                    <p>218/4 Ngo Quyen, Rach Gia, An Giang</p>
+                    <p>206 Lam Quang Ky, Rach Gia, An Giang, Viet Nam</p>
                   </div>
                 </div>
               </motion.div>
@@ -510,8 +616,19 @@ export default function HomePage() {
                 className="border-l border-white/20 pl-6 py-4"
               >
                 <p className="text-sm font-light italic text-gray-400 leading-relaxed">
-                  "Moi dong code la mot cau chuyen. Toi viet bang dam me, hoan thien bang su ti mi."
+                  "{t("qoute")}"
                 </p>
+              </motion.div>
+
+              {/* Learn More Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 }}
+              >
+                <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
+                  {t("learnMore")}
+                </Button>
               </motion.div>
             </motion.div>
 
@@ -525,7 +642,7 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-white/5 blur-2xl" />
                 <img
-                  src="/deptrai.png"
+                  src="/newavt.jpg"
                   alt="Le Quoc Thang"
                   className="relative w-full max-w-lg h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
@@ -535,95 +652,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROJECTS SECTION - CURSOR TRAIL */}
-     <section
-  id="projectsDone"
-  data-section="2"
-  className="relative min-h-screen py-32 px-6 flex items-center bg-[#0a0a0a]"
->
-  <div className="max-w-7xl mx-auto w-full text-center">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="mb-20"
-    >
-      <p className="text-xs tracking-[0.3em] text-gray-500 uppercase mb-6">
-        {t("projectsDone")}
-      </p>
-      <h2 className="text-6xl md:text-7xl font-light tracking-tight text-white mb-6">
-        SELECTED WORKS
-      </h2>
-      <div className="w-24 h-[1px] bg-white mx-auto mb-10" />
+      {/* PROJECTS SECTION */}
+      <ProjectSection />
 
-      <p className="text-xs tracking-[0.3em] text-gray-600 uppercase">
-        Click a card to explore next project
-      </p>
-    </motion.div>
+      {/* SERVICES SECTION */}
+      <ServicesSection />
 
-    <ProjectCardStack projects={projects} />
-  </div>
-</section>
-
-
-      {/* LANGUAGES & FRAMEWORKS */}
-      <section id="languageandfw" data-section="3" className="relative min-h-screen py-32 px-6 overflow-hidden flex items-center bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <p className="text-xs tracking-[0.3em] text-gray-500 uppercase mb-6">
-              {t("languageandfw")}
-            </p>
-            <h2 className="text-6xl md:text-7xl font-light tracking-tight text-white">
-              TECH STACK
-            </h2>
-            <div className="w-24 h-[1px] bg-white mt-8" />
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {languages.map((lang, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                whileHover={{ y: -10 }}
-                className="group relative"
-              >
-                <div className="aspect-square bg-[#141414] border border-white/10 p-8 flex items-center justify-center group-hover:border-white/30 transition-all duration-500">
-                  <img
-                    src={lang.img || "/placeholder.svg"}
-                    alt={lang.name}
-                    className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700"
-                  />
-                </div>
-                <p className="mt-4 text-center text-xs tracking-[0.2em] text-gray-500 uppercase group-hover:text-white transition-colors duration-300">
-                  {lang.name}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-20 text-center"
-          >
-            <p className="text-xs tracking-[0.3em] text-gray-600 uppercase">
-              & More Technologies
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <ResumeSection />
-
+      {/* CONTACT SECTION */}
+      <ContactSection />
+            <ZaloQR/>
       {/* Footer */}
       <footer className="py-16 text-center border-t border-white/5 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-6">
